@@ -29,7 +29,7 @@ class Var(object):
     
   #  else:
     ON_HEROKU = False 
-    APP_NAME = str(getenv(APP_NAME + "koyeb.app"))
+    
     #FQDN = str(getenv('FQDN',BIND_ADRESS)) if not ON_HEROKU or getenv(FQDN) else APP_NAME + "koyeb.app"
     FQDN = str(getenv('FQDN',APP_NAME))
     HAS_SSL=bool(getenv('HAS_SSL',False))
