@@ -21,7 +21,7 @@ class Var(object):
     PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
     OWNER_ID = set(int(x) for x in os.environ.get("OWNER_ID", "945284066").split())  
     NO_PORT = bool(getenv('NO_PORT', False))
-    APP_NAME = None
+    APP_NAME = str(getenv('APP_NAME','unfortunate-malissa'))
     OWNER_USERNAME = str(getenv('OWNER_USERNAME',"FLIGHER"))
    # if 'DYNO' in environ:
        # ON_HEROKU = True
@@ -29,7 +29,9 @@ class Var(object):
     
   #  else:
     ON_HEROKU = False 
-    FQDN = str(getenv('FQDN',BIND_ADRESS)) if not ON_HEROKU or getenv(FQDN) else APP_NAME + "koyeb.app"
+    APP_NAME = str(getenv(APP_NAME + "koyeb.app"))
+    #FQDN = str(getenv('FQDN',BIND_ADRESS)) if not ON_HEROKU or getenv(FQDN) else APP_NAME + "koyeb.app"
+    FQDN = str(getenv('FQDN',APP_NAME))
     HAS_SSL=bool(getenv('HAS_SSL',False))
     if HAS_SSL:
         URL = "https://{}/".format(FQDN)
