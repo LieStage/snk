@@ -29,7 +29,7 @@ class Var(object):
     
   #  else:
     ON_HEROKU = False 
-    FQDN = str(getenv('FQDN','unfortunate-malissa')) 
+    FQDN = str(getenv('FQDN','flash_urlBot')) 
     HAS_SSL=bool(getenv('HAS_SSL',False))
     if HAS_SSL:
         URL = "https://{}/".format(FQDN)
