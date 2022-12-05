@@ -28,7 +28,7 @@ class Var(object):
        # APP_NAME = str(getenv('APP_NAME',"filetolinktb")) #
     
   #  else:
-        #ON_HEROKU = False 
+    ON_HEROKU = False 
     FQDN = str(getenv('FQDN', BIND_ADRESS)) 
     HAS_SSL=bool(getenv('HAS_SSL',False))
     if HAS_SSL:
