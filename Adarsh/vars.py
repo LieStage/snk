@@ -29,7 +29,7 @@ class Var(object):
     
   #  else:
     ON_HEROKU = False 
-    FQDN = str(getenv('FQDN', BIND_ADRESS)) 
+    FQDN = str(getenv('FQDN','unfortunate-malissa')) 
     HAS_SSL=bool(getenv('HAS_SSL',False))
     if HAS_SSL:
         URL = "https://{}/".format(FQDN)
