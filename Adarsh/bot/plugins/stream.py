@@ -136,7 +136,7 @@ async def channel_receive_handler(bot, broadcast):
     if MY_PASS:
         check_pass = await pass_db.get_user_pass(broadcast.chat.id)
         if check_pass == None:
-            await broadcast.reply_text("Login first using /login cmd \n don\'t know the pass? request it from @opustechz")
+            await broadcast.reply_text("Login first using /login cmd \n don\'t know the pass? request it from @fligher")
             return
         if check_pass != MY_PASS:
             await broadcast.reply_text("Wrong password, login again")
