@@ -39,4 +39,6 @@ class Var(object):
         URL = "http://{}/".format(FQDN)
     DATABASE_URL = str(getenv('DATABASE_URL',"mongodb+srv://video:merge@cluster0.km7eaiw.mongodb.net/?retryWrites=true&w=majority"))
     UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', "lion_stage"))
-    BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001362659779")).split())) 
+    BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001362659779")).split()))
+    LONG_DROPLINK_URL = str(getenv('LONG_DROPLINK_URL',"shorturllink"))
+    SHORTENER_API = str(getenv('SHORTNER_API',"c1c6e39e62ec0186c6be3b72c3cddc272177966a"))
