@@ -8,7 +8,6 @@ from Adarsh.bot import StreamBot
 from Adarsh.utils.database import Database
 from Adarsh.utils.human_readable import humanbytes
 from Adarsh.vars import Var
-from Adarsh.vars import LONG_DROPLINK_URL,SHORTENER_API
 from urllib.parse import quote_plus
 from pyrogram import filters, Client
 from pyrogram.errors import FloodWait, UserNotParticipant
@@ -17,6 +16,8 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from Adarsh.utils.file_properties import get_name, get_hash, get_media_file_size
 db = Database(Var.DATABASE_URL, Var.name)
 
+LONG_DROPLINK_URL = os.environ.get('LONG_DROPLINK_URL',"shorturllink")
+SHORTENER_API = os.environ.get('SHORTENER_API',"c1c6e39e62ec0186c6be3b72c3cddc272177966a")
 
 MY_PASS = os.environ.get("MY_PASS","3429")
 pass_dict = {}
@@ -161,7 +162,7 @@ async def channel_receive_handler(bot, broadcast):
             id=broadcast.id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("⚡ ᴡᴀᴛᴄʜ ⚡", url=stream_link),
+                    [InlineKeyboardButton("⚡ ᴡᴀᴛᴄʜ ⚡", url=link),
                      InlineKeyboardButton('⚡ ᴅᴏᴡɴʟᴏᴀᴅ ⚡', url=online_link)] 
                 ]
             )
