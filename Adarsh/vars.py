@@ -11,7 +11,7 @@ class Var(object):
     MULTI_CLIENT = False
     API_ID = int(getenv('API_ID',"4682685"))
     API_HASH = str(getenv('API_HASH',"3eba5d471162181b8a3f7f5c0a23c307"))
-    BOT_TOKEN = str(getenv('BOT_TOKEN',"5544919313:AAGKLmMJvI0Gn6ZMyUYVIS1JPH8daIoPs3g"))
+    BOT_TOKEN = str(getenv('BOT_TOKEN',"5553062054:AAEwtZ2XWJHF42qQc5Bi-5VkO5t2Si3YXc8"))
     name = str(getenv('SESSION_NAME', 'filetolinkbot'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '4'))
@@ -37,6 +37,6 @@ class Var(object):
         URL = "https://{}/".format(FQDN)
     else:
         URL = "http://{}/".format(FQDN)
-    DATABASE_URL = str(getenv('DATABASE_URL',"mongodb+srv://twobot:cbot22@cluster0.tbf5o.mongodb.net/?retryWrites=true&w=majority"))
+    DATABASE_URL = str(getenv('DATABASE_URL',"mongodb+srv://video:merge@cluster0.km7eaiw.mongodb.net/?retryWrites=true&w=majority"))
     UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', "lion_stage"))
     BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001362659779")).split())) 
