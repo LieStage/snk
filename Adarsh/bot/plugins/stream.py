@@ -3,6 +3,7 @@ import os
 import asyncio
 import shortzy
 import requests
+import aiohttp
 from asyncio import TimeoutError
 from Adarsh.bot import StreamBot
 from Adarsh.utils.database import Database
