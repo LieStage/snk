@@ -187,7 +187,7 @@ async def get_shortlink(link):
         https = "https"
         link = link.replace("http", https)
     url = f'https://atglinks.com/api'
-    params = {'api': URL_SHORTNER_WEBSITE_API,
+    params = {'api': SHORTENER_API,
               'url': link,
               }
 
