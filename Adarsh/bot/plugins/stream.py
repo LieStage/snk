@@ -98,7 +98,7 @@ async def private_receive_handler(c: Client, m: Message):
     try:
 
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
-        stream_link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
+        link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         
@@ -180,18 +180,26 @@ async def channel_receive_handler(bot, broadcast):
         
 
         
-shortz = shortzy.Shortzy(SHORTENER_API, "atglinks.com")
+async def get_shortlink(link):
+    https = link.split(":")[0]
+    if "http" == https:
+        https = "https"
+        link = link.replace("http", https)
+    url = f'https://atglinks.com/api'
+    params = {'api': URL_SHORTNER_WEBSITE_API,
+              'url': link,
+              }
 
-async def get_shortlink(stream_link):
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
+                data = await response.json()
+                if data["status"] == "success":
+                    return data['shortenedUrl']
+                else:
+                    logger.error(f"Error: {data['message']}")
+                    return f'https://{URL_SHORTENR_WEBSITE}/api?api={URL_SHORTNER_WEBSITE_API}&link={link}'
 
-    if SHORTENER_API:
-
-        if LONG_DROPLINK_URL == "True" or LONG_DROPLINK_URL is True:
-
-            return await shortz.get_quick_link(stream_link)
-
-        else:
-
-            return await shortz.convert(stream_link, silently_fail=False)
-
-    return link
+    except Exception as e:
+        logger.error(e)
+        return f'{URL_SHORTENR_WEBSITE}/api?api={URL_SHORTNER_WEBSITE_API}&link={link}'
